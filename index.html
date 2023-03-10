@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Birthday CountDown</title>
+    <style>
+      /* CSS styles for the message */
+      body {
+        background-color: #fff;
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      h1 {
+        color: #f00;
+        font-size: 6rem;
+        margin-top: 10%;
+      }
+      #countdown {
+        color: #f00;
+        font-size: 2rem;
+        margin-top: 3%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="Header">BirthDay Countdown!</h1>
+    <p id="countdown"></p>
+    <script>
+      // JavaScript code for countdown
+      let dbay=false;
+      let frame=false;
+      const countdown = () => {
+        const now = new Date();
+        const birthday = new Date(now.getFullYear(), 2, 11);
+        const diff = birthday - now;
+        const hrs = Math.floor(diff / 1000 / 60/ 60);
+        const tempMin=((diff / 1000 / 60 / 60)-hrs)*60;
+        const min = parseInt(tempMin);
+        const sec = parseInt(tempMin.toString().split(".")[1].slice(0,2));
+        const countdownEl = document.getElementById('countdown');
+        const header= document.getElementById('header');
+        if (diff<=0) {
+            dbay=true;
+            Header.innerHTML="Happy BirthDay!"
+            countdownEl.innerHTML = 'Happy BirthDay Garima!<br />Today is your birthday!';
+            window.location.href = "GarimaBday.html";
+        } else {
+            countdownEl.innerHTML = `Only ${hrs}hour(s):${min}min(s):${sec}sec(s) until your birthday!`;
+        }       
+      };
+
+      countdown();
+      if(!dbay){
+        setInterval(countdown, 900);
+      }
+      setInterval(countdown, 900);
+    </script>
+  </body>
+</html>
